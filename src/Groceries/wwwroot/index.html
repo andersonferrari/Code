@@ -1,0 +1,100 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <link href="lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="lib/jquery/dist/jquery.min.js"></script>
+    <script src="lib/bootstrap/dist/js/bootstrap.js"></script>
+
+</head>
+<body ng-app="groceryApp">
+    <h1>Groceries</h1>
+    <br/>
+    <div ng-controller="groceryController">
+       
+        <table class="table table-bordered table-striped col-md-10">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Title</th>
+                    <th>Price</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                    <th>Up</th>
+                    <th>Down</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="g in groceries" ng-include="getTemplate(g)">
+                   
+                </tr>
+            </tbody>
+        </table>
+        <script type="text/ng-template" id="display">
+            <td>{{g.Id}}</td>
+            <td>{{g.Title}}</td>
+            <td>{{g.Price}}</td>
+            <td>
+                <button ng-click="startEdit(g)" type="button" class="btn btn-md">
+                    <span class="glyphicon glyphicon-edit"></span> Edit
+                </button>
+            </td>
+            <td>
+                <button ng-click="deleteGrocery(g)" type="button" class="btn btn-md">
+                    <span class="glyphicon glyphicon-remove"></span> Del
+                </button>
+            </td>
+            <td>
+                <button ng-click="moveUp(g)" type="button" class="btn btn-md">
+                    <span class="glyphicon glyphicon-arrow-up"></span>
+                </button>
+            </td>
+            <td>
+                <button ng-click="moveDown(g)" type="button" class="btn btn-md">
+                    <span class="glyphicon glyphicon-arrow-down"></span>
+                </button>
+            </td>
+        </script>
+        <script type="text/ng-template" id="edit">
+            <td>{{g.Id}}</td>
+            <td><input type="text" ng-model="selected.Title" /></td>
+            <td><input type="text" ng-model="selected.Price" /></td>
+            <td>
+                <button ng-click="save(selected, $index)" type="button" class="btn btn-md">
+                    <span class="glyphicon glyphicon-save"></span> Save
+                </button>
+                <button ng-click="reset()" type="button" class="btn btn-md">
+                    <span class="glyphicon glyphicon-ban-circle"></span> Cancel
+                </button>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </script>
+
+        <p class="row"><br /><br /><br /></p>
+
+        <form name="addEditGrocery" class="row">
+            <div class="col-md-3">
+                <label for="ex2">Title</label>
+                <input ng-model="newG.Title" class="form-control" id="ex2" type="text">
+            </div>
+            <div class="col-md-4">
+                <label for="ex3">Price</label>
+                <input ng-model="newG.Price" class="form-control" id="ex3" type="text">
+            </div>
+
+            <p class="row"><br /><br /><br /></p>
+            <div class="col-md-12">
+                <button ng-click="add()" type="button" class="btn btn-md">
+                    <span class="glyphicon glyphicon-plus"></span> Add
+                </button>
+            </div>
+        </form>
+</div>
+
+    <script src="/lib/angular/angular.js"></script>
+    <script src="/app/app.js"></script>
+    <script src="/app/groceryFactory.js"></script>
+    <script src="/app/groceryController.js"></script>
+</body>
+</html>
