@@ -1,0 +1,1 @@
+!function(){"use strict";angular.module("groceryApp",[])}(),function(){"use strict";function a(a){function b(){return a.get("/api/Grocery")}var c={getGroceries:b};return c}angular.module("groceryApp").factory("groceryFactory",a),a.$inject=["$http"]}();

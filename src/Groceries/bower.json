@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "angular": "1.4.6",
+    "bootstrap": "3.3.5",
+    "ng-table": "0.8.3"
+  },
+  "name": "ASP.NET",
+  "private": true
+}
